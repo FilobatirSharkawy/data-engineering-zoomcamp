@@ -1,0 +1,19 @@
+FROM python:latest
+
+# Update package lists
+RUN apt-get update 
+RUN apt-get install wget
+
+# Copy and install Python dependencies
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# Copy the csv files
+COPY yellow_tripdata_2021-01.csv .
+COPY taxi_zone_lookup.csv .
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Python script
+COPY upload-data.py .

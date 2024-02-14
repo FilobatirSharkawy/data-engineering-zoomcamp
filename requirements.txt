@@ -1,0 +1,4 @@
+# install needed packeges 
+pandas 
+psycopg2 
+sqlalchemy
